@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Electroneum Testnet ETN Faucet
+
+This repository contains a Next.js application that serves as a faucet for Electroneum (ETN) testnet tokens. It allows users to request ETN from the testnet by solving a CAPTCHA and provides a user-friendly interface for developers and testers interacting with the Electroneum testnet.
+
+## Features
+
+- **ETN Testnet Integration**: Connects to the ETN-SC RPC for testnet transactions.
+- **Rate Limiting**: Ensures fair usage with Redis-based rate limiting.
+- **CAPTCHA Protection**: Uses hCaptcha to prevent abuse.
+- **Modern Frontend**: Built with Next.js for a responsive and efficient UI.
+
+## Prerequisites
+
+Before running this application, ensure you have the following:
+
+- **ETN-SC RPC**: A running Electroneum testnet node with RPC access.
+- **Redis**: For rate-limiting and session management.
+- **hCaptcha Account**: For CAPTCHA verification.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/electroneum/etn-faucet.git
+cd etn-faucet
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Environment Variables
 
-## Learn More
+Create a `.env.local` file in the root directory and set the following variables:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+# ETN-SC RPC
+RPC_URL=<Your ETN-SC RPC endpoint>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Faucet Private Key
+PRIVATE_KEY=<Your faucet private key>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Redis Configuration
+REDIS_URL=<Your Redis connection URL>
 
-## Deploy on Vercel
+# hCaptcha Configuration
+HCAPTCHA_SECRET_KEY=<Your hCaptcha secret key>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Public Configurations
+NEXT_PUBLIC_RATE_LIMIT_COOLDOWN_PERIOD_HOURS=<Rate limit cooldown period in hours>
+NEXT_PUBLIC_HCAPTCHA_SITE_KEY=<Your hCaptcha site key>
+NEXT_PUBLIC_ETN_AMOUNT=<Amount of ETN to dispense per request>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Run the Application
+
+#### Development
+
+```bash
+pnpm dev
+```
+
+#### Production
+
+1. Build the application:
+
+   ```bash
+   pnpm build
+   ```
+
+2. Start the production server:
+
+   ```bash
+   pnpm start
+   ```
+
+The application will be accessible at `http://localhost:3000`.
+
+## Usage
+
+1. Navigate to the application in your browser.
+2. Enter your testnet ETN address.
+3. Solve the hCaptcha challenge.
+4. Submit the form to receive testnet ETN tokens.
+
+## Deployment
+
+You can deploy this application on any hosting provider that supports Node.js. Popular choices include:
+
+- [Vercel](https://vercel.com/)
+- [Heroku](https://www.heroku.com/)
+- [AWS](https://aws.amazon.com/)
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+### Guidelines
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org/) for the awesome React framework.
+- [hCaptcha](https://www.hcaptcha.com/) for CAPTCHA services.
+- [Redis](https://redis.io/) for caching and rate limiting.
+
+## Questions or Feedback?
+
+Feel free to reach out via [GitHub Issues](https://github.com/electroneum/etn-faucet/issues)!
