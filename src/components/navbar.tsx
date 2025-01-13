@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav className="border-b border-border bg-gray-50 dark:bg-gray-900 min-w-fit">
       <div className="container mx-auto">
         <div className="flex flex-row justify-between py-4">
-          <div className="flex flex-row gap-2 px-6" style={{ alignItems: "center" }}>
+          <div className="flex flex-row px-6" style={{ alignItems: "center" }}>
             <Link href="https://electroneum.com" className="block dark:hidden">
               <Image src={"electroneum-logo-dark.svg"} alt="ETN Logo" width={128} height={128} className="min-w-32" />
             </Link>
@@ -20,19 +20,18 @@ export default function Navbar() {
             <Button variant={"outline"} asChild>
               <Link href={"https://developer.electroneum.com"} target="_blank">
                 <LucideChevronsLeftRight />
-                Developer Resources
+                Developer Portal
               </Link>
             </Button>
             <Button variant={"outline"} asChild>
               <Link href={"https://blockexplorer.electroneum.com"} target="_blank">
                 <LucideCuboid />
-                Block Explorer
+                Explorer
               </Link>
             </Button>
             <Button variant={"default"} asChild>
               <Link href={"https://github.com/electroneum/etn-faucet"} target="_blank">
                 <LucideGithub />
-                View on GitHub
               </Link>
             </Button>
           </div>
